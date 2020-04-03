@@ -41,7 +41,7 @@ Route::group(['middleware'=>'web'], function()
     Route::get('session2', ['uses'=>'TableController@session2']);
 });
 
-Route::get('response',['uses' => 'TableController@response']);
+//Route::get('response',['uses' => 'TableController@response']);
 
 //宣传页面
 Route::get('activity0', ['uses'=>'TableController@activity0']);
