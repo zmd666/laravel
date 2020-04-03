@@ -52,3 +52,5 @@ Route::group(['middleware'=>'activity'], function()
     Route::get('activity2', ['uses'=>'TableController@activity2']);
 });
 
+Route::get('activity3', ['uses'=>'TableController@activity3']);
+
