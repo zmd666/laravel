@@ -17,8 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about/dffg', 'TestController@test');
-
 Route::group(['prefix'=>'admin','namespace'=>'Test'], function()
 {
     Route::get('login', 'LoginController@test');
@@ -29,9 +27,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Test'], function()
 });
 Route::get('test1', ['uses'=>'StudentController@test1',
     'as'=>'student']);
-Route::get('query1', ['uses'=>'StudentController@query1']);
-Route::get('query2', ['uses'=>'StudentController@query2']);
-Route::get('orm2', ['uses'=>'StudentController@orm2']);
+
 Route::get('student/request1', ['uses'=>'TableController@request1']);
 Route::get('request1',['uses' => 'TableController@request1','middleware' => 'test']);
 
@@ -54,3 +50,32 @@ Route::group(['middleware'=>'activity'], function()
 
 Route::get('activity3', ['uses'=>'TableController@activity3']);
 
+Route::group(['prefix'=>'users', 'middleware'=>'users'], function()
+{
+    Route::get('list', ['uses'=>'UsersController@list']);
+    Route::get('select', ['uses'=>'UsersController@select']);
+    Route::get('create', ['uses'=>'UsersController@create']);
+    Route::get('update', ['uses'=>'UsersController@update']);
+    Route::get('delete', ['uses'=>'UsersController@delete']);
+});
+Route::group(['prefix'=>'address'], function()
+{
+    Route::get('list', ['uses'=>'AddressController@list']);
+    Route::get('create', ['uses'=>'AddressController@create']);
+    Route::get('delete', ['uses'=>'AddressController@delete']);
+    Route::get('is_default', ['uses'=>'AddressController@is_default']);
+});
+//注册页面
+//Route::get('register', 'RegisterController@index');
+//注册行为
+Route::post('register', 'RegisterController@register');
+//登录页面
+Route::get('login', 'LoginController@index');
+//登录行为
+Route::post('login', 'LoginController@login');
+//登出行为
+Route::get('logout', 'LoginController@logout');
+//个人设置页面
+Route::get('user/me/setting', 'UserController@setting');
+//个人设置操作
+Route::post('user/me/setting', 'UserController@settingStore');
