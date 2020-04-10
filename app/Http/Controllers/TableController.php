@@ -88,6 +88,7 @@ class TableController extends Controller
     public function activity2()
     {
         return 'welcome!welcome!';
+
     }
 }
 
