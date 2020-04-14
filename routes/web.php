@@ -79,3 +79,4 @@ Route::get('logout', 'LoginController@logout');
 Route::get('user/me/setting', 'UserController@setting');
 //个人设置操作
 Route::post('user/me/setting', 'UserController@settingStore');
+Route::get('job', 'JobController@index');
